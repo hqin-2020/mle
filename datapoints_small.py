@@ -7,7 +7,7 @@ from tqdm import tqdm
 import pickle
 import warnings
 warnings.simplefilter('ignore')
-batch_n = np.np.random.randint(1,100000)
+batch_n = np.random.randint(1,100000)
 from concurrent.futures import ProcessPoolExecutor
 np.set_printoptions(suppress = True)
 pd.set_option('display.float_format', lambda x: '%.3f' % x)
