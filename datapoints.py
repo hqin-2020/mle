@@ -15,7 +15,6 @@ from optimize import *
 import time 
 import os
 
-time_start = time.time()
 data_points = 50
 start_trials = 14*8
 
@@ -103,7 +102,3 @@ if __name__ == '__main__':
 
 with open('MLE_'+str(batch_n)+'.pkl', 'wb') as f:
        pickle.dump(batch, f)
-
-time_end = time.time()
-time_elapsed = time_end - time_start
-print(time_elapsed)
