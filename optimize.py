@@ -10,7 +10,8 @@ warnings.simplefilter('ignore')
 from multiprocessing import Process
 np.set_printoptions(suppress = True)
 pd.set_option('display.float_format', lambda x: '%.3f' % x)
-
+import time 
+import os
 
 def optimization(obs_series):
 
@@ -136,10 +137,11 @@ def optimization(obs_series):
         fobj = ll(x)
         θseries.append(x)
         llseries.append(fobj)
-
+    
+    np.random.seed((os.getpid() * int(time.time())) % 123456789)
     θseries = []
     llseries = []
-
+    np.random.seed()
     start = θ + np.random.uniform(-0.2,0.2,22)
     bnds = ((0,1),(-2,2),\
             (-2,2),(-2,2),\
@@ -147,7 +149,7 @@ def optimization(obs_series):
             (-2,2),(-2,2),(-2,2),(-2,2),\
             (-2,2),(-2,2),(-2,2),(-2,2),\
             (-5,5),(-2,2),(-5,5),(-2,2),(-2,2),(-5,5))
-            
+    
     θ_opt = sp.optimize.minimize(ll, start, method = 'L-BFGS-B', bounds = bnds, options = {'maxiter':10000, 'disp': False}, callback = callback, tol=1e-6)    
         
     return [θ_opt, θseries, llseries, start]

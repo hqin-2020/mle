@@ -12,7 +12,8 @@ from concurrent.futures import ProcessPoolExecutor
 np.set_printoptions(suppress = True)
 pd.set_option('display.float_format', lambda x: '%.3f' % x)
 from optimize import *
-
+import time 
+import os
 data_points = 2
 start_trials = 14*3
 
