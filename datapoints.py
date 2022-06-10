@@ -7,13 +7,16 @@ from tqdm import tqdm
 import pickle
 import warnings
 warnings.simplefilter('ignore')
-batch_n = 1
+batch_n = np.random.randint(1,100000)
 from concurrent.futures import ProcessPoolExecutor
 np.set_printoptions(suppress = True)
 pd.set_option('display.float_format', lambda x: '%.3f' % x)
 from optimize import *
+import time 
+import os
 
-data_points = 10
+time_start = time.time()
+data_points = 50
 start_trials = 14*8
 
 T = 300
@@ -100,3 +103,7 @@ if __name__ == '__main__':
 
 with open('MLE_'+str(batch_n)+'.pkl', 'wb') as f:
        pickle.dump(batch, f)
+
+time_end = time.time()
+time_elapsed = time_end - time_start
+print(time_elapsed)
