@@ -14,7 +14,7 @@ pd.set_option('display.float_format', lambda x: '%.3f' % x)
 from optimize import *
 
 data_points = 2
-start_trials = 14
+start_trials = 14*3
 
 T = 300
 λ, η = 0.5, 0
